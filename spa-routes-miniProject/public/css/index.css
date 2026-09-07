@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+@theme {
+  --font-IRANSansX: "IRANSansX";
+}
+
+body {
+  @apply text-white font-IRANSansX overflow-x-hidden;
+}
