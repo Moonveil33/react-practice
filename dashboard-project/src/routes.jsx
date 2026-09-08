@@ -1,4 +1,10 @@
 import { createBrowserRouter, Outlet } from "react-router";
+import Home from "./pages/Home/page";
+import Products from "./pages/Products/page";
+import Users from "./pages/Users/page";
+import Tickets from "./pages/Tickets/page";
+import TicketDetails from "./pages/TicketDetails/page";
+import Comments from "./pages/Comments/page";
 
 const router = createBrowserRouter([
   {
@@ -13,27 +19,27 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <div>HomePage</div>,
+        element: <Home />,
       },
       {
         path: "products",
-        element: <div>Products</div>,
+        element: <Products />,
       },
       {
         path: "users",
-        element: <div>users</div>,
+        element: <Users />,
       },
       {
         path: "tickets",
-        element: <div>tickets</div>,
+        element: <Tickets />,
       },
       {
         path: "tickets/:ticketId",
-        element: <div>TicketDetails</div>,
+        element: <TicketDetails />,
       },
       {
         path: "comments",
-        element: <div>Comments</div>,
+        element: <Comments />,
       },
       {
         path: "/*",
