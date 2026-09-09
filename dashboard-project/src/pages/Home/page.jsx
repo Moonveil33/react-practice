@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import SectionTitle from "../../components/common/SectionTitle";
 import { useNavigate } from "react-router";
+import Summaries from "../../features/Summaries/Summaries";
 
 const Home = () => {
   const [isRedirecting, setIsRedirecting] = useState(false);
@@ -31,7 +32,7 @@ const Home = () => {
   return (
     <>
       <SectionTitle title="داشبورد" Buttons={<CTAButton />} />
-      {/* <Summaries /> */}
+      <Summaries />
 
       <div className="">
         {/* <DetailsCharts /> */}
