@@ -36,4 +36,30 @@ const generateSummaries = ({
   ];
 };
 
-export { generateSummaries };
+const generateChartData = ({
+  productsLength,
+  usersLength,
+  ticketsLength,
+  adminsLength,
+}) => {
+  return [
+    {
+      name: "تعداد محصولات",
+      value: productsLength,
+    },
+    {
+      name: "تعداد کاربران",
+      value: usersLength,
+    },
+    {
+      name: "تعداد تیکت ها",
+      value: ticketsLength,
+    },
+    {
+      name: "تعداد مدیران",
+      value: adminsLength,
+    },
+  ];
+};
+
+export { generateSummaries, generateChartData };
