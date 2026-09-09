@@ -3,6 +3,7 @@ import SectionTitle from "../../components/common/SectionTitle";
 import { useNavigate } from "react-router";
 import Summaries from "../../features/Summaries/Summaries";
 import DetailsCharts from "../../features/DetailsCharts/DetailsCharts";
+import LastProductTable from "../../features/LastProductTable/LastProductTable";
 
 const Home = () => {
   const [isRedirecting, setIsRedirecting] = useState(false);
@@ -35,9 +36,9 @@ const Home = () => {
       <SectionTitle title="داشبورد" Buttons={<CTAButton />} />
       <Summaries />
 
-      <div className="">
+      <div className="mt-20 pb-10 space-y-10">
         <DetailsCharts />
-        {/* <ProductsTable /> */}
+        <LastProductTable />
         {/* <OuickOverview /> */}
       </div>
     </>
