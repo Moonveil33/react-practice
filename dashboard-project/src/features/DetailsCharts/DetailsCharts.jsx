@@ -8,6 +8,7 @@ import {
   YAxis,
 } from "recharts";
 import { generateChartData } from "../../utils/home";
+import CustomTooltip from "./components/CustomTooltip";
 
 const DetailsCharts = () => {
   const chartData = generateChartData({
@@ -25,7 +26,7 @@ const DetailsCharts = () => {
             <Bar dataKey={"value"} fill="#8884d8" />
             <XAxis dataKey={"name"} />
             <YAxis />
-            <Tooltip />
+            <Tooltip content={CustomTooltip} />
           </BarChart>
         </ResponsiveContainer>
       </div>
