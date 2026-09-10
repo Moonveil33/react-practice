@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Table from "../../components/common/Table/Table";
 import TableHead from "../../components/common/Table/elements/TableHead";
 import TableHeadCell from "../../components/common/Table/elements/TableHeadCell";
@@ -14,6 +14,8 @@ import ChangeVisibilityIcon from "./components/ChangeVisibilityIcon";
 import EditProductIcon from "./components/EditProductIcon";
 
 const LastProductTable = () => {
+  const [lastProducts, setLastProducts] = useState([...products]);
+
   const Buttons = () => {
     return (
       <Link
@@ -26,6 +28,11 @@ const LastProductTable = () => {
         </span>
       </Link>
     );
+  };
+
+  const removeProduct = (id) => {
+    const newProducts = lastProducts.filter((product) => product.id !== id);
+    setLastProducts(newProducts);
   };
 
   return (
@@ -53,7 +60,7 @@ const LastProductTable = () => {
         </TableHead>
 
         <TableBody>
-          {products.map((product) => (
+          {lastProducts.map((product) => (
             <TableRow key={product.id}>
               <TableCell>{product.id.slice(0, 10)}...</TableCell>
               <TableCell>{product.title}</TableCell>
@@ -75,9 +82,12 @@ const LastProductTable = () => {
               </TableCell>
               <TableCell>
                 <div className="flex items-center gap-2">
-                  <RemoveProductIcon />
-                  <ChangeVisibilityIcon />
-                  <EditProductIcon />
+                  <RemoveProductIcon
+                    product={product}
+                    handler={removeProduct}
+                  />
+                  <ChangeVisibilityIcon product={product} />
+                  <EditProductIcon product={product} />
                 </div>
               </TableCell>
             </TableRow>

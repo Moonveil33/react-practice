@@ -13,7 +13,15 @@ const RemoveProductIcon = ({ product, handler }) => {
       title="حذف محصول"
       Trigger={<Trigger />}
       onSubmit={() => handler(product.id)}
-    ></Modal>
+    >
+      <div className="flex items-center justify-center">
+        آیا از حذف محصول
+        <kbd className="px-2 py-1 rounded-md bg-red-500/15 font-black! text-red-500">
+          {product.title}
+        </kbd>
+        اطمسنان دارید ؟
+      </div>
+    </Modal>
   );
 };
 
