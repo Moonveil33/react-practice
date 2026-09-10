@@ -9,6 +9,9 @@ import { Link } from "react-router";
 import { MdOpenInNew } from "react-icons/md";
 import { products, productsTableHeadRow } from "../../data/products";
 import clsx from "clsx";
+import RemoveProductIcon from "./components/RemoveProductIcon";
+import ChangeVisibilityIcon from "./components/ChangeVisibilityIcon";
+import EditProductIcon from "./components/EditProductIcon";
 
 const LastProductTable = () => {
   const Buttons = () => {
@@ -70,7 +73,13 @@ const LastProductTable = () => {
                   تومان
                 </span>
               </TableCell>
-              <TableCell>{"amaliay"}</TableCell>
+              <TableCell>
+                <div className="flex items-center gap-2">
+                  <RemoveProductIcon />
+                  <ChangeVisibilityIcon />
+                  <EditProductIcon />
+                </div>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
