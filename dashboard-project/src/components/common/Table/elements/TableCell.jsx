@@ -1,7 +1,7 @@
 import React from "react";
 
-const TableCell = () => {
-  return <div>TableCell</div>;
+const TableCell = ({ children }) => {
+  return <div className="line-clamp-1">{children}</div>;
 };
 
 export default TableCell;

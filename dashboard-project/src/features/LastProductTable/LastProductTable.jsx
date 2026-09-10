@@ -7,6 +7,8 @@ import TableRow from "../../components/common/Table/elements/TableRow";
 import TableCell from "../../components/common/Table/elements/TableCell";
 import { Link } from "react-router";
 import { MdOpenInNew } from "react-icons/md";
+import { products, productsTableHeadRow } from "../../data/products";
+import clsx from "clsx";
 
 const LastProductTable = () => {
   const Buttons = () => {
@@ -40,7 +42,39 @@ const LastProductTable = () => {
             </TableRow>
         </TableBody>
     </Table> */}
-      <Table header={{ title: "لیست محصولات", Buttons: Buttons }}></Table>
+      <Table header={{ title: "لیست محصولات", Buttons: Buttons }}>
+        <TableHead>
+          {productsTableHeadRow.map((row) => (
+            <TableHeadCell key={row}>{row}</TableHeadCell>
+          ))}
+        </TableHead>
+
+        <TableBody>
+          {products.map((product) => (
+            <TableRow key={product.id}>
+              <TableCell>{product.id.slice(0, 10)}...</TableCell>
+              <TableCell>{product.title}</TableCell>
+              <TableCell>
+                <p
+                  className={clsx(
+                    product.isPublished ? "success-badge" : "danger-badge",
+                    "badge",
+                  )}
+                >
+                  {product.isPublished ? "عمومی" : "خصوصی"}
+                </p>
+              </TableCell>
+              <TableCell>
+                <span>
+                  {product.price.toLocaleString("fa-ir")}
+                  تومان
+                </span>
+              </TableCell>
+              <TableCell>{"amaliay"}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
     </div>
   );
 };
