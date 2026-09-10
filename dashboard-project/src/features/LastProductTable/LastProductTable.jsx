@@ -6,10 +6,21 @@ import TableBody from "../../components/common/Table/elements/TableBody";
 import TableRow from "../../components/common/Table/elements/TableRow";
 import TableCell from "../../components/common/Table/elements/TableCell";
 import { Link } from "react-router";
+import { MdOpenInNew } from "react-icons/md";
 
 const LastProductTable = () => {
   const Buttons = () => {
-    return <Link>صفحه محصولات</Link>;
+    return (
+      <Link
+        to={"/products"}
+        className="underline hover:text-blue-400 text-blue-500 flex-center gap-1"
+      >
+        <span className="flex-center">
+          صفحه محصولات
+          <MdOpenInNew />
+        </span>
+      </Link>
+    );
   };
 
   return (
