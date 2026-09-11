@@ -62,7 +62,14 @@ const LastProductTable = () => {
             </TableRow>
         </TableBody>
     </Table> */}
-      <Table header={{ title: "لیست محصولات", Buttons: Buttons }}>
+      <Table
+        header={{ title: "لیست محصولات", Buttons: Buttons }}
+        pagination={{
+          items: products,
+          setItems: setLastProducts,
+          itemsPerPage: 4,
+        }}
+      >
         <TableHead>
           {productsTableHeadRow.map((row) => (
             <TableHeadCell key={row}>{row}</TableHeadCell>
