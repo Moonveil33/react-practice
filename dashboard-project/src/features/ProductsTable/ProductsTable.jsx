@@ -13,7 +13,7 @@ import RemoveProductIcon from "./components/RemoveProductIcon";
 import ChangeVisibilityIcon from "./components/ChangeVisibilityIcon";
 import EditProductIcon from "./components/EditProductIcon";
 
-const LastProductTable = () => {
+const ProductsTable = () => {
   const [lastProducts, setLastProducts] = useState([...products]);
 
   const Buttons = () => {
@@ -118,4 +118,4 @@ const LastProductTable = () => {
   );
 };
 
-export default LastProductTable;
+export default ProductsTable;
