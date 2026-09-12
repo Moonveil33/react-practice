@@ -39,7 +39,11 @@ const Products = () => {
             paginatedProducts={paginatedProducts}
           />
         ) : (
-          <ProductsGridView products={products} />
+          <ProductsGridView
+            products={products}
+            setProducts={setPaginatedProducts}
+            paginatedProducts={paginatedProducts}
+          />
         )}
       </section>
     </>
