@@ -9,7 +9,7 @@ import TableCell from "../../components/common/Table/elements/TableCell";
 import { productsAllTableHeadRow } from "../../data/products";
 import clsx from "clsx";
 
-const ProductsTableView = ({ products, setProducts }) => {
+const ProductsTableView = ({ products, setProducts, paginatedProducts }) => {
   return (
     <div>
       <Table
@@ -27,7 +27,7 @@ const ProductsTableView = ({ products, setProducts }) => {
         </TableHead>
 
         <TableBody>
-          {products.map((product) => (
+          {paginatedProducts.map((product) => (
             <TableRow key={product.id}>
               <TableCell>{product.id.slice(0, 10)}...</TableCell>
               <TableCell>{product.title}</TableCell>
