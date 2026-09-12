@@ -5,6 +5,9 @@ import { products } from "./../../data/products";
 import ProductsTableView from "./../../features/ProductsView/ProductsTableView";
 import ProductsGridView from "./../../features/ProductsView/ProductsGridView";
 
+import Modal from "../../components/common/Modal";
+import AddProductFields from "../../features/ProductsTable/components/AddProductFields";
+
 const Products = () => {
   const [layoutType, setLayoutType] = useState("TABLE"); // or GRID
   const [paginatedProducts, setPaginatedProducts] = useState([...products]);
@@ -13,6 +16,8 @@ const Products = () => {
     const layout = layoutType === "TABLE" ? "GRID" : "TABLE";
     setLayoutType(layout);
   };
+
+  const createNewProduct = () => {};
 
   const Buttons = (
     <>
@@ -23,7 +28,15 @@ const Products = () => {
         {layoutType === "TABLE" ? <CiGrid41 /> : <CiViewTable />}
       </button>
 
-      <button className="primary-bg px-3 py-1.5">ایجاد محصول</button>
+      <Modal
+        title={"ایجاد محصول جدید"}
+        Trigger={
+          <button className="primary-bg px-3 py-1.5">ایجاد محصول</button>
+        }
+        onSubmit={createNewProduct}
+      >
+        <AddProductFields />
+      </Modal>
     </>
   );
 
