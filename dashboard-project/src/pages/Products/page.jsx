@@ -12,12 +12,24 @@ const Products = () => {
   const [layoutType, setLayoutType] = useState("TABLE"); // or GRID
   const [paginatedProducts, setPaginatedProducts] = useState([...products]);
 
+  const [newProduct, setNewProduct] = useState({
+    id: crypto.randomUUID(),
+    title: "",
+    description: "",
+    price: "",
+    img: "/images/product-img.png",
+    isPublished: false,
+    entity: "",
+  });
+
   const toggleLayout = () => {
     const layout = layoutType === "TABLE" ? "GRID" : "TABLE";
     setLayoutType(layout);
   };
 
-  const createNewProduct = () => {};
+  const createNewProduct = () => {
+    products.push(newProduct);
+  };
 
   const Buttons = (
     <>
@@ -35,7 +47,7 @@ const Products = () => {
         }
         onSubmit={createNewProduct}
       >
-        <AddProductFields />
+        <AddProductFields newProduct={newProduct} onChange={setNewProduct} />
       </Modal>
     </>
   );

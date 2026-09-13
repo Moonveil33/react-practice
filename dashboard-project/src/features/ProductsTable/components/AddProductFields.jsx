@@ -1,4 +1,4 @@
-const AddProductFields = () => {
+const AddProductFields = ({ newProduct, onChange }) => {
   const fields = [
     { label: "عنوان محصول", key: "title", type: "text" },
     { label: "وضعیت انتشار", key: "isPublished", type: "select" },
@@ -6,6 +6,17 @@ const AddProductFields = () => {
     { label: "قیمت محصول", key: "price", type: "number" },
     { label: "توضیحات محصول", key: "description", type: "textarea" },
   ];
+
+  const handleChange = (key, value) => {
+    // console.log({ key, value });
+    const product = {
+      ...newProduct,
+      [key]: value,
+    };
+    console.log(product);
+
+    onChange(product);
+  };
 
   return (
     <div>
@@ -16,7 +27,10 @@ const AddProductFields = () => {
           </label>
 
           {field.type === "textarea" ? (
-            <textarea className="block mt-2 text-sm min-h-[140px] px-3 rounded-md bg-gradient-to-t from-zinc-100/70 shadow placeholder:text-sm border outline-none primary-border-color w-full" />
+            <textarea
+              onChange={(event) => handleChange(field.key, event.target.value)}
+              className="block mt-2 text-sm min-h-[140px] px-3 rounded-md bg-gradient-to-t from-zinc-100/70 shadow placeholder:text-sm border outline-none primary-border-color w-full"
+            />
           ) : field.type === "select" ? (
             <select
               className="block mt-2 px-3 rounded-md bg-gradient-to-t from-zinc-100/70 shadow placeholder:text-sm h-10 border outline-none primary-border-color w-full"
@@ -29,6 +43,7 @@ const AddProductFields = () => {
             <input
               type={field.type}
               className="block mt-2 px-3 rounded-md bg-gradient-to-t from-zinc-100/70 shadow placeholder:text-sm h-10 border outline-none primary-border-color w-full"
+              onChange={(event) => handleChange(field.key, event.target.value)}
             />
           )}
         </div>
