@@ -29,6 +29,15 @@ const Products = () => {
 
   const createNewProduct = () => {
     products.push(newProduct);
+    setNewProduct({
+      id: crypto.randomUUID(),
+      title: "",
+      description: "",
+      price: "",
+      img: "/images/product-img.png",
+      isPublished: false,
+      entity: "",
+    });
   };
 
   const Buttons = (
