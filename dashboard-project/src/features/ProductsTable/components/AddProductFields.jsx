@@ -11,7 +11,7 @@ const AddProductFields = ({ newProduct, onChange }) => {
     // console.log({ key, value });
     const product = {
       ...newProduct,
-      [key]: value,
+      [key]: key === "price" ? Number(value) : value,
     };
     console.log(product);
 
