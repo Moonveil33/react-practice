@@ -8,10 +8,10 @@ const Pagination = ({ items, setItems, itemsPerPage }) => {
   useEffect(() => {
     const startIndex = (currentPage - 1) * itemsPerPage; // 4
     const endIndex = startIndex + itemsPerPage; // 8
-    const paginatedItems = items.slice(startIndex, endIndex);
+    const paginatedItems = [...items].reverse().slice(startIndex, endIndex);
 
     setItems(paginatedItems);
-  }, [currentPage]);
+  }, [currentPage, items]);
 
   const changePageHandler = (pageNumber) => setCurrentPage(pageNumber);
 

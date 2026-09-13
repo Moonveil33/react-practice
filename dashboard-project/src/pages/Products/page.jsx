@@ -10,7 +10,8 @@ import AddProductFields from "../../features/ProductsTable/components/AddProduct
 
 const Products = () => {
   const [layoutType, setLayoutType] = useState("TABLE"); // or GRID
-  const [paginatedProducts, setPaginatedProducts] = useState([...products]);
+  const [allProducts, setAllProducts] = useState([...products]);
+  const [paginatedProducts, setPaginatedProducts] = useState([]);
 
   const [newProduct, setNewProduct] = useState({
     id: crypto.randomUUID(),
@@ -28,7 +29,7 @@ const Products = () => {
   };
 
   const createNewProduct = () => {
-    products.push(newProduct);
+    setAllProducts([...allProducts, newProduct]);
     setNewProduct({
       id: crypto.randomUUID(),
       title: "",
@@ -68,7 +69,7 @@ const Products = () => {
       <section className="mt-10 w-full! min-w-full!">
         {layoutType === "TABLE" ? (
           <ProductsTableView
-            products={products}
+            products={allProducts}
             setProducts={setPaginatedProducts}
             paginatedProducts={paginatedProducts}
           />
