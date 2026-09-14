@@ -1,42 +1,14 @@
 import { useEffect, useState } from "react";
 import "./App.css";
+import useFetch from "./hooks/useFetch";
 
 function App() {
-  const [users, setUsers] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const controller = new AbortController();
-    setLoading(true);
-    setError(null);
-
-    const fetchUsers = async () => {
-      try {
-        const response = await fetch(
-          "https://jsonplaceholder.typicode.com/users",
-          {
-            signal: controller.signal,
-          },
-        );
-        if (!response.ok) {
-          throw new Error(`${response.status} - ${response.statusText}`);
-        }
-        const data = await response.json();
-        setUsers(data);
-        setLoading(false); // فقط در صورت موفقیت غیرفعال می‌شود
-      } catch (err) {
-        if (err.name !== "AbortError") {
-          setError(err.message);
-          setLoading(false); // در صورت بروز خطای واقعی غیرفعال می‌شود
-        }
-      }
-    };
-
-    fetchUsers();
-
-    return () => controller.abort();
-  }, []);
+  //"https://jsonplaceholder.typicode.com/users"
+  const {
+    data: users,
+    loading,
+    error,
+  } = useFetch("https://jsonplaceholder.typicode.com/users");
 
   if (loading) {
     return <h1>Please Wait ...</h1>;
