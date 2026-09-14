@@ -13,10 +13,12 @@ function App() {
   if (loading) {
     return <h1>Please Wait ...</h1>;
   }
+  if (error) {
+    return <h1 style={{ color: "red" }}>{error}</h1>;
+  }
 
   return (
     <>
-      {error && <p style={{ color: "red" }}>{error}</p>}
       <ul>
         {users.map((user) => (
           <li key={user.id}>
