@@ -5,15 +5,18 @@ import Summaries from "../../features/Summaries/Summaries";
 import DetailsCharts from "../../features/DetailsCharts/DetailsCharts";
 import ProductsTable from "../../features/ProductsTable/ProductsTable";
 import QuickOverview from "../../features/QuickOverview/QuickOverview";
+import useToggle from "../../hooks/useToggle";
 
 const Home = () => {
-  const [isRedirecting, setIsRedirecting] = useState(false);
+  // const [isRedirecting, setIsRedirecting] = useState(false);
+  // const toggle = () => {
+  //   setIsRedirecting(!isRedirecting);
+  // };
+
+  // Using CustomHook
+  const [isRedirecting, toggle] = useToggle(false);
+
   const navigate = useNavigate();
-
-  const toggle = () => {
-    setIsRedirecting(!isRedirecting);
-  };
-
   const CTAButton = () => {
     const clickHandler = () => {
       toggle();
