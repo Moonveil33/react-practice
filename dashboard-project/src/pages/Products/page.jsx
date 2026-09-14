@@ -8,8 +8,13 @@ import ProductsGridView from "./../../features/ProductsView/ProductsGridView";
 import Modal from "../../components/common/Modal";
 import AddProductFields from "../../features/ProductsTable/components/AddProductFields";
 
+const getDefaultLayout = () => {
+  const defaultLayout = localStorage.getItem("layout");
+  return defaultLayout ? defaultLayout : "TABLE";
+};
+
 const Products = () => {
-  const [layoutType, setLayoutType] = useState("TABLE"); // or GRID
+  const [layoutType, setLayoutType] = useState(getDefaultLayout()); // or GRID
   const [allProducts, setAllProducts] = useState([...products]);
   const [paginatedProducts, setPaginatedProducts] = useState([]);
 
@@ -26,6 +31,11 @@ const Products = () => {
   const toggleLayout = () => {
     const layout = layoutType === "TABLE" ? "GRID" : "TABLE";
     setLayoutType(layout);
+    setIntoLocalStorage("layout", layout);
+  };
+
+  const setIntoLocalStorage = (key, value) => {
+    localStorage.setItem(key, value);
   };
 
   const createNewProduct = () => {
