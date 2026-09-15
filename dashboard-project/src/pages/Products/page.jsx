@@ -8,6 +8,7 @@ import ProductsGridView from "./../../features/ProductsView/ProductsGridView";
 import Modal from "../../components/common/Modal";
 import AddProductFields from "../../features/ProductsTable/components/AddProductFields";
 import useLocalStorage from "../../hooks/useLocalStorage";
+import useTitle from "../../hooks/useTitle";
 
 // const getDefaultLayout = () => {
 //   const defaultLayout = localStorage.getItem("layout");
@@ -31,6 +32,9 @@ const Products = () => {
     isPublished: false,
     entity: "",
   });
+
+  // customHook
+  useTitle("صفحه محصولات");
 
   const toggleLayout = () => {
     const layout = layoutType === "TABLE" ? "GRID" : "TABLE";

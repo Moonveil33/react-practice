@@ -6,7 +6,7 @@ import DetailsCharts from "../../features/DetailsCharts/DetailsCharts";
 import ProductsTable from "../../features/ProductsTable/ProductsTable";
 import QuickOverview from "../../features/QuickOverview/QuickOverview";
 import useToggle from "../../hooks/useToggle";
-
+import useTitle from "../../hooks/useTitle";
 const Home = () => {
   // const [isRedirecting, setIsRedirecting] = useState(false);
   // const toggle = () => {
@@ -15,6 +15,9 @@ const Home = () => {
 
   // Using CustomHook
   const [isRedirecting, toggle] = useToggle(false);
+
+  // custom Hook
+  useTitle("صفحه اصلی");
 
   const navigate = useNavigate();
   const CTAButton = () => {
