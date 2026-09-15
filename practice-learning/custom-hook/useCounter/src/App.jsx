@@ -4,11 +4,15 @@ import viteLogo from "./assets/vite.svg";
 import heroImg from "./assets/hero.png";
 import "./App.css";
 import useCounter from "./hooks/useCounter";
+import useLogger from "./hooks/useLogger";
 
 function App() {
   // const counter = useCounter();
   // console.log(counter);
   const { count, increase, decrease } = useCounter(10);
+
+  // coustom hook - trace and watch on components with custom hook
+  useLogger("Counter", count);
 
   return (
     <>
