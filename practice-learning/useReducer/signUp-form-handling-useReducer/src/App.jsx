@@ -28,6 +28,9 @@ const userReducer = (user, action) => {
     case "maritalStatus": {
       return { ...user, maritalStatus: action.value };
     }
+    case "fetch_posts": {
+      return { ...user, posts: action.posts };
+    }
     default: {
       return user;
     }
@@ -44,12 +47,27 @@ const App = () => {
     gender: "",
     nationality: "",
     maritalStatus: "",
+    //  For test and learn api fetch
+    posts: [],
   });
+
+  const fetchHandler = async () => {
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+    const data = await response.json();
+
+    dispatch({
+      type: "fetch_posts",
+      posts: data,
+    });
+  };
 
   return (
     <>
       <main className="w-dvw ">
-        <form className="w-[80%]  mx-auto bg-white my-10 rounded-lg p-10 overflow-y-auto shadow">
+        <form
+          onSubmit={(e) => e.preventDefault()}
+          className="w-[80%]  mx-auto bg-white my-10 rounded-lg p-10 overflow-y-auto shadow"
+        >
           <section id="content-wrapper" className="w-[90%] mx-auto">
             <FormHeader />
 
@@ -198,10 +216,31 @@ const App = () => {
                     <option value="married">متاهل</option>
                   </select>
                 </div>
+
+                <button
+                  onClick={fetchHandler}
+                  style={{
+                    cursor: "pointer",
+                    padding: "1rem 2.5rem",
+                    backgroundColor: "#e3e3e3",
+                    borderRadius: "7px",
+                  }}
+                >
+                  Fetch Data
+                </button>
               </div>
             </div>
           </section>
         </form>
+        <br />
+        <hr />
+        <div>
+          <ul>
+            {user.posts.length
+              ? user.posts.map((post) => <li key={post.id}>{post.title}</li>)
+              : null}
+          </ul>
+        </div>
       </main>
       <BgOverlay />
     </>
