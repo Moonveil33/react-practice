@@ -1,0 +1,9 @@
+export const FETCH_POSTS = "FETCH_POSTS";
+export const FIRSTNAME = "FIRSTNAME";
+export const LASTNAME = "LASTNAME";
+export const EMAIL = "EMAIL";
+export const PHONE = "PHONE";
+export const BIRTH_DATE = "BIRTH_DATE";
+export const GENDER = "GENDER";
+export const NATIONALITY = "NATIONALITY";
+export const MARITAL_STATUS = "MARITAL_STATUS";

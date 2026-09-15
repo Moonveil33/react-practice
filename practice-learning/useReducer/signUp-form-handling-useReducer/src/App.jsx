@@ -1,41 +1,19 @@
 import { useReducer } from "react";
 import BgOverlay from "./components/BgOverlay";
 import FormHeader from "./components/FormHeader";
+import userReducer from "./reducers/userReducer";
 
-const userReducer = (user, action) => {
-  switch (action.type) {
-    case "firstName": {
-      return { ...user, firstName: action.value };
-    }
-    case "lastName": {
-      return { ...user, lastName: action.value };
-    }
-    case "email": {
-      return { ...user, email: action.value };
-    }
-    case "phone": {
-      return { ...user, phone: action.value };
-    }
-    case "birthDate": {
-      return { ...user, birthDate: action.value };
-    }
-    case "gender": {
-      return { ...user, gender: action.value };
-    }
-    case "nationality": {
-      return { ...user, nationality: action.value };
-    }
-    case "maritalStatus": {
-      return { ...user, maritalStatus: action.value };
-    }
-    case "fetch_posts": {
-      return { ...user, posts: action.posts };
-    }
-    default: {
-      return user;
-    }
-  }
-};
+import {
+  FETCH_POSTS,
+  FIRSTNAME,
+  LASTNAME,
+  EMAIL,
+  PHONE,
+  BIRTH_DATE,
+  GENDER,
+  NATIONALITY,
+  MARITAL_STATUS,
+} from "./actions/user";
 
 const App = () => {
   const [user, dispatch] = useReducer(userReducer, {
@@ -56,8 +34,8 @@ const App = () => {
     const data = await response.json();
 
     dispatch({
-      type: "fetch_posts",
-      posts: data,
+      type: FETCH_POSTS,
+      payload: data,
     });
   };
 
@@ -85,7 +63,10 @@ const App = () => {
                   <input
                     value={user.firstName}
                     onChange={(event) =>
-                      dispatch({ type: "firstName", value: event.target.value })
+                      dispatch({
+                        type: FIRSTNAME,
+                        payload: event.target.value,
+                      })
                     }
                     type="text"
                     name="firstName"
@@ -101,7 +82,10 @@ const App = () => {
                   <input
                     value={user.lastName}
                     onChange={(event) =>
-                      dispatch({ type: "lastName", value: event.target.value })
+                      dispatch({
+                        type: LASTNAME,
+                        payload: event.target.value,
+                      })
                     }
                     type="text"
                     name="lastName"
@@ -116,7 +100,7 @@ const App = () => {
                   </label>
                   <input
                     onChange={(event) =>
-                      dispatch({ type: "email", value: event.target.value })
+                      dispatch({ type: EMAIL, payload: event.target.value })
                     }
                     value={user.email}
                     type="email"
@@ -132,7 +116,7 @@ const App = () => {
                   </label>
                   <input
                     onChange={(event) =>
-                      dispatch({ type: "phone", value: event.target.value })
+                      dispatch({ type: PHONE, payload: event.target.value })
                     }
                     value={user.phone}
                     type="tel"
@@ -148,7 +132,10 @@ const App = () => {
                   </label>
                   <input
                     onChange={(event) =>
-                      dispatch({ type: "birthDate", value: event.target.value })
+                      dispatch({
+                        type: BIRTH_DATE,
+                        payload: event.target.value,
+                      })
                     }
                     value={user.birthDate}
                     type="date"
@@ -164,7 +151,7 @@ const App = () => {
                   </label>
                   <select
                     onChange={(event) =>
-                      dispatch({ type: "gender", value: event.target.value })
+                      dispatch({ type: GENDER, payload: event.target.value })
                     }
                     value={user.gender}
                     name="gender"
@@ -184,8 +171,8 @@ const App = () => {
                   <input
                     onChange={(event) =>
                       dispatch({
-                        type: "nationality",
-                        value: event.target.value,
+                        type: NATIONALITY,
+                        payload: event.target.value,
                       })
                     }
                     value={user.nationality}
@@ -203,8 +190,8 @@ const App = () => {
                   <select
                     onChange={(event) =>
                       dispatch({
-                        type: "maritalStatus",
-                        value: event.target.value,
+                        type: MARITAL_STATUS,
+                        payload: event.target.value,
                       })
                     }
                     value={user.maritalStatus}
