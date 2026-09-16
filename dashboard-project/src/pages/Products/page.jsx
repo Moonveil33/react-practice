@@ -1,6 +1,6 @@
 import { CiGrid41, CiViewTable } from "react-icons/ci";
 import SectionTitle from "./../../components/common/SectionTitle";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { products } from "./../../data/products";
 import ProductsTableView from "./../../features/ProductsView/ProductsTableView";
 import ProductsGridView from "./../../features/ProductsView/ProductsGridView";
@@ -9,6 +9,7 @@ import Modal from "../../components/common/Modal";
 import AddProductFields from "../../features/ProductsTable/components/AddProductFields";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import useTitle from "../../hooks/useTitle";
+import AuthContext from "../../context/auth";
 
 // const getDefaultLayout = () => {
 //   const defaultLayout = localStorage.getItem("layout");
@@ -16,6 +17,10 @@ import useTitle from "../../hooks/useTitle";
 // };
 
 const Products = () => {
+  // useContext learning - به پروژه ارتباطی نداره
+  const auth = useContext(AuthContext);
+  console.log(auth);
+
   // const [layoutType, setLayoutType] = useState(getDefaultLayout()); // or GRID
 
   // Using LocalStorage Hook - custom-hook
