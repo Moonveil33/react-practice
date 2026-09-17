@@ -18,10 +18,10 @@ const Expensive = ({ handler }) => {
   const [exNumber, setExNumber] = useState(0);
   console.log(`[Expensive.jsx] Re-Rendered`);
 
-  //   const result = expensiveFunction(exNumber);
+  const result = expensiveFunction(exNumber);
 
   // useMemo for memorize result of function
-  const result = useMemo(() => expensiveFunction(exNumber), [exNumber]);
+  // const result = useMemo(() => expensiveFunction(exNumber), [exNumber]);
 
   return (
     <>
@@ -31,4 +31,5 @@ const Expensive = ({ handler }) => {
   );
 };
 
-export default memo(Expensive);
+// export default memo(Expensive);
+export default Expensive;

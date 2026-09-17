@@ -14,5 +14,5 @@ const Counter = ({ count, setCount }) => {
     </button>
   );
 };
-
-export default memo(Counter);
+// export default memo(Counter)
+export default Counter;

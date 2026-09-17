@@ -17,9 +17,9 @@ function App() {
   // };
 
   // zamani az useCallBack estefade mishe ke dar component maqsad component memo shode vali memo natoone tashkhis bede ke voroodi function aya jadid tarif shode ya na
-  const handler = useCallback(() => {
+  const handler = () => {
     console.log("handler fn");
-  }, []);
+  };
 
   // const [users, setUsers] = useState(["Alice", "bob", "jason", "maral"]);
 
