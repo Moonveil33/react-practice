@@ -182,3 +182,13 @@
     border-right-color: var(--border);
   }
 }
+
+.dark-mode {
+  background-color: #222;
+  color: #eee;
+}
+
+.light-mode {
+  background-color: #eee;
+  color: #222;
+}
