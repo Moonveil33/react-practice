@@ -10,16 +10,22 @@ const expensiveFunction = (exNumber) => {
   return exNumber;
 };
 
-const Expensive = ({ count }) => {
+const Expensive = ({ handler }) => {
+  // hich estefadeii az handler nemikonm
+
+  // handler estefade nemishe vali ba taqir count render mishe ba inke memo shode
+  // chon function ham reference type hast va aslan motevaje handler nemsihe
   const [exNumber, setExNumber] = useState(0);
   console.log(`[Expensive.jsx] Re-Rendered`);
 
   //   const result = expensiveFunction(exNumber);
+
+  // useMemo for memorize result of function
   const result = useMemo(() => expensiveFunction(exNumber), [exNumber]);
 
   return (
     <>
-      <div>COunt: {count}</div>
+      {/* <div>COunt: {count}</div> */}
       <div>Expensive Result: {result}</div>
     </>
   );

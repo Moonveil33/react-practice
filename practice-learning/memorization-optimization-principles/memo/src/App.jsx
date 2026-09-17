@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import heroImg from "./assets/hero.png";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "./assets/vite.svg";
@@ -12,13 +12,22 @@ function App() {
   const [count, setCount] = useState(0);
   const [inputValue, setInputValue] = useState("");
 
-  const [users, setUsers] = useState(["Alice", "bob", "jason", "maral"]);
+  // const handler = () => {
+  //   console.log("handler fn");
+  // };
 
-  const changeUser = () => {
-    const newUsers = [...users];
-    newUsers[0] = "amirMahdi";
-    setUsers(newUsers);
-  };
+  // zamani az useCallBack estefade mishe ke dar component maqsad component memo shode vali memo natoone tashkhis bede ke voroodi function aya jadid tarif shode ya na
+  const handler = useCallback(() => {
+    console.log("handler fn");
+  }, []);
+
+  // const [users, setUsers] = useState(["Alice", "bob", "jason", "maral"]);
+
+  // const changeUser = () => {
+  //   const newUsers = [...users];
+  //   newUsers[0] = "amirMahdi";
+  //   setUsers(newUsers);
+  // };
 
   return (
     <>
@@ -40,21 +49,21 @@ function App() {
 
         <Counter count={count} setCount={setCount} />
 
-        <div>
+        {/* <div>
           <Name name={inputValue} setName={setInputValue} />
-        </div>
+        </div> */}
 
-        <div>
+        {/* <div>
           <Users users={users} />
           <hr />
-        </div>
+        </div> */}
 
-        <div>
+        {/* <div>
           <button onClick={changeUser}>Change First User</button>
-        </div>
+        </div> */}
 
         <div>
-          <Expensive count={count} />
+          <Expensive handler={handler} />
         </div>
       </section>
 
