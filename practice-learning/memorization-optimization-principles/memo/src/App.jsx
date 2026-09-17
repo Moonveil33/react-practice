@@ -6,6 +6,7 @@ import "./App.css";
 import Counter from "./components/Counter";
 import Name from "./components/Name";
 import Users from "./components/Users";
+import Expensive from "./components/Expensive";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -45,9 +46,15 @@ function App() {
 
         <div>
           <Users users={users} />
+          <hr />
         </div>
+
         <div>
           <button onClick={changeUser}>Change First User</button>
+        </div>
+
+        <div>
+          <Expensive count={count} />
         </div>
       </section>
 
