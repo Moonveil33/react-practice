@@ -9,6 +9,9 @@ import Users from "./components/Users";
 import Expensive from "./components/Expensive";
 
 function App() {
+  // lear use no memo
+  // "use no memo";
+
   const [count, setCount] = useState(0);
   const [inputValue, setInputValue] = useState("");
 
