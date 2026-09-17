@@ -5,10 +5,19 @@ import viteLogo from "./assets/vite.svg";
 import "./App.css";
 import Counter from "./components/Counter";
 import Name from "./components/Name";
+import Users from "./components/Users";
 
 function App() {
   const [count, setCount] = useState(0);
   const [inputValue, setInputValue] = useState("");
+
+  const [users, setUsers] = useState(["Alice", "bob", "jason", "maral"]);
+
+  const changeUser = () => {
+    const newUsers = [...users];
+    newUsers[0] = "amirMahdi";
+    setUsers(newUsers);
+  };
 
   return (
     <>
@@ -32,6 +41,13 @@ function App() {
 
         <div>
           <Name name={inputValue} setName={setInputValue} />
+        </div>
+
+        <div>
+          <Users users={users} />
+        </div>
+        <div>
+          <button onClick={changeUser}>Change First User</button>
         </div>
       </section>
 
