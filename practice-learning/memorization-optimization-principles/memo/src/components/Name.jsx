@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 
 const Name = ({ name, setName }) => {
   console.log(["[Name.jsx] - reRendered"]);
@@ -8,4 +8,4 @@ const Name = ({ name, setName }) => {
   );
 };
 
-export default Name;
+export default memo(Name);

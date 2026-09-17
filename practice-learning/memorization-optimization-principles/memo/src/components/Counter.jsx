@@ -1,7 +1,7 @@
-import React from "react";
+import React, { memo } from "react";
 
-const Counter = ({ countObj }) => {
-  const { count, setCount } = countObj;
+const Counter = ({ count, setCount }) => {
+  //   const { count, setCount } = countObj;
   console.log(["[Counter.jsx] - reRendered"]);
 
   return (
@@ -15,4 +15,4 @@ const Counter = ({ countObj }) => {
   );
 };
 
-export default Counter;
+export default memo(Counter);

@@ -28,7 +28,7 @@ function App() {
           <p>{count}</p>
         </div>
 
-        <Counter countObj={{ count, setCount }} />
+        <Counter count={count} setCount={setCount} />
 
         <div>
           <Name name={inputValue} setName={setInputValue} />
