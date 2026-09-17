@@ -1,4 +1,4 @@
-import { memo, useState } from "react";
+import { memo, useState, useMemo } from "react";
 
 const expensiveFunction = (exNumber) => {
   console.log(`[ExpensiveFunction] - Calculating`);
@@ -14,7 +14,8 @@ const Expensive = ({ count }) => {
   const [exNumber, setExNumber] = useState(0);
   console.log(`[Expensive.jsx] Re-Rendered`);
 
-  const result = expensiveFunction(exNumber);
+  //   const result = expensiveFunction(exNumber);
+  const result = useMemo(() => expensiveFunction(exNumber), [exNumber]);
 
   return (
     <>
