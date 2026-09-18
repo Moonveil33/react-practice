@@ -10,6 +10,7 @@ import AddProductFields from "../../features/ProductsTable/components/AddProduct
 import useLocalStorage from "../../hooks/useLocalStorage";
 import useTitle from "../../hooks/useTitle";
 import AuthContext from "../../context/auth";
+import withAuth from "../../HOCs/withAuth";
 
 // const getDefaultLayout = () => {
 //   const defaultLayout = localStorage.getItem("layout");
@@ -108,4 +109,5 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default withAuth(Products);
+// export default withAuth(Products);
