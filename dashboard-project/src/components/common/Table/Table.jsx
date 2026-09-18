@@ -1,6 +1,7 @@
 import React from "react";
 import TableHeader from "./elements/TableHeader";
 import Pagination from "../Pagination";
+import withLoader from "../../../HOCs/withLoader";
 
 const Table = ({
   header = { title: "لیست آیتم ها", Buttons: undefined },
@@ -20,4 +21,4 @@ const Table = ({
   );
 };
 
-export default Table;
+export default withLoader(Table);

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import Table from "../../components/common/Table/Table";
 import TableHead from "../../components/common/Table/elements/TableHead";
@@ -10,6 +10,13 @@ import { productsAllTableHeadRow } from "../../data/products";
 import clsx from "clsx";
 
 const ProductsTableView = ({ products, setProducts, paginatedProducts }) => {
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+  }, []);
+
   return (
     <div>
       <Table
@@ -19,6 +26,7 @@ const ProductsTableView = ({ products, setProducts, paginatedProducts }) => {
           items: products,
           setItems: setProducts,
         }}
+        loading={loading}
       >
         <TableHead>
           {productsAllTableHeadRow.map((cell) => (
