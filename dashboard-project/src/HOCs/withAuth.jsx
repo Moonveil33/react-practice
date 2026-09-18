@@ -7,15 +7,34 @@
 import React from "react";
 import { Navigate } from "react-router";
 
+// -------- Anonymous function -----------
+
+// const withAuth = ({ WrapperComponent }) => {
+//   return function (props) {
+//     const token = localStorage.getItem("token");
+//     if (token) {
+//       return <WrapperComponent {...props} />;
+//     }
+
+//     return <Navigate to={"/"} />;
+//   };
+// };
+
+// export default withAuth;
+
+// ------- way 2 -----------------
+
 const withAuth = ({ WrapperComponent }) => {
-  return function () {
+  const EnhancedComponent = (props) => {
     const token = localStorage.getItem("token");
     if (token) {
-      return <WrapperComponent />;
+      return <WrapperComponent {...props} />;
     }
 
     return <Navigate to={"/"} />;
   };
+  EnhancedComponent.displayName = `WithAuth(${WrapperComponent.name})`;
+  return EnhancedComponent;
 };
 
 export default withAuth;
