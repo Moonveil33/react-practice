@@ -1,12 +1,17 @@
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 import SectionTitle from "../../components/common/SectionTitle";
 import { useNavigate } from "react-router";
 import Summaries from "../../features/Summaries/Summaries";
 import DetailsCharts from "../../features/DetailsCharts/DetailsCharts";
-import ProductsTable from "../../features/ProductsTable/ProductsTable";
 import QuickOverview from "../../features/QuickOverview/QuickOverview";
 import useToggle from "../../hooks/useToggle";
 import useTitle from "../../hooks/useTitle";
+import { lazy } from "react";
+
+const ProductsTable = lazy(
+  () => import("../../features/ProductsTable/ProductsTable"),
+); // Promise mide be ma
+
 const Home = () => {
   // const [isRedirecting, setIsRedirecting] = useState(false);
   // const toggle = () => {
@@ -45,7 +50,11 @@ const Home = () => {
 
       <div className="mt-20 pb-10 space-y-10">
         <DetailsCharts />
-        <ProductsTable />
+
+        <Suspense fallback={<div>Loading ...</div>}>
+          <ProductsTable />
+        </Suspense>
+
         <QuickOverview />
       </div>
     </>
